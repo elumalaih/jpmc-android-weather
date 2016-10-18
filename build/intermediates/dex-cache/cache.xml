@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/harike1/Documents/Android/CodeChallenge/WeatherApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="0181e693efeec4188f8109abb42955d4a00703ff">
+        <dex dex="/Users/harike1/Documents/Android/CodeChallenge/WeatherApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8d2815ef666c34af40b153c666c08567d390e6f0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/harike1/Documents/Android/CodeChallenge/WeatherApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="c3e71099892c9b312f4c692c11c699fc3b0b2ef5">
+        <dex dex="/Users/harike1/Documents/Android/CodeChallenge/WeatherApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_382a1754d4e4366fad5c124fdf5fa3acc23e17a4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/harike1/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="/Users/harike1/Documents/Android/CodeChallenge/WeatherApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-18.0.0_75cc3fc9496b43deba5acc875784cce42874e5a8/classes.dex" />
+    </item>
+
+</items>

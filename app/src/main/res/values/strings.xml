@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Weather</string>
+    <string name="app_id">ca99507cff77f98e603a4b6a9b528b13</string>
+    <string name="image_format">.png</string>
+
+</resources>
