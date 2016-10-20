@@ -1,7 +1,7 @@
 package com.elumalai.weather.helpers;
 
 /**
- * Shared preference helper
+ * Shared preference helper Contains shared preference tag and location preference tag value
  */
 public class Helper {
 

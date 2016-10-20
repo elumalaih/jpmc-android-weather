@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Custom shared preference to store and retrieve data
+ * Custom shared preference helper helps application to store and retrieve data.
+ * Here we storing user last searched location(city name)
+ *
  */
 
 public class CustomSharedPreference {
@@ -13,6 +15,7 @@ public class CustomSharedPreference {
 
     /**
      * Custom shared preference initialization
+     * initialization with preference tag and creation mode parameters
      *
      * @param context
      */
@@ -21,7 +24,8 @@ public class CustomSharedPreference {
     }
 
     /**
-     * set city name(location)
+     * set city name(location) in custom shared preference
+     * while passing key->Value pair (Here we are passing location_prefs as key and location(city name) as value
      *
      * @param cityName
      */
@@ -30,7 +34,7 @@ public class CustomSharedPreference {
     }
 
     /**
-     * Get city name(location
+     * Get city name(location) while passing location_prefs key
      *
      * @return
      */

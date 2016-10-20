@@ -8,7 +8,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /*
- * JSON Weather Parther
+ * JSON Weather Parser, Convert retrieved weather data into JSONObject and setting weather and location model data value
+ * Converted JSONObject contains following sub object and array
+ * i)coord object contains lat,lon value
+ * ii)sys object contains country ,sunrise,sunset,name
+ * iii)Weather array contains description and icon code
+ * iv)main object contains humitity,pressure..
+ * v) wind object contains speed and deg
+ *
+ * Todo - Have to use sunrise and sunset response value in UI
  *
  */
 public class JSONWeatherParser {
@@ -43,6 +51,7 @@ public class JSONWeatherParser {
         weather.currentCondition.setCondition(getString("main", JSONWeather));
         weather.currentCondition.setIcon(getString("icon", JSONWeather));
 
+        //get Humitity,pressure,temp from main object
         JSONObject mainObj = getObject("main", jObj);
         weather.currentCondition.setHumidity(getInt("humidity", mainObj));
         weather.currentCondition.setPressure(getInt("pressure", mainObj));

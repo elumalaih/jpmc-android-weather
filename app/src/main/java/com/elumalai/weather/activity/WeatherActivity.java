@@ -19,7 +19,15 @@ import com.elumalai.weather.model.Weather;
 import org.json.JSONException;
 
 /**
- * Display the current weather of entered city
+ * Display the current weather report in the application UI of user entered city. And also store user last searched city
+ * in local shared preference
+ * The report contains following information
+ * i)Location name and country (Ex : Columbus, US)
+ * ii)Current Weather Condition (Ex :  Sky is Clear)
+ * iii)Current Temperature (Ex : 26'6 C)
+ * iV) Current Humidity (Ex: 96%)
+ * V)Current Pressure (Ex: 1019 hpa)
+ * vi)Current Wind speed (Ex: 3.16mps)
  */
 public class WeatherActivity extends Activity {
 
@@ -34,18 +42,21 @@ public class WeatherActivity extends Activity {
     private ImageView imgView;
     EditText cityName;
     private CustomSharedPreference sharedPreference;
+    private String appId;
 
     // This method would be called when What's the weather button would be pressed
     public void findtheweather(View view) {
 
-        //Assigning the value which user entered to String s
+        //Assigning the value which user entered to city
         String cityValue = cityName.getText().toString();
+        //Getting registered appId
 
         //Setting preference - storing city name in shared preference
         sharedPreference.setLocationInPreference(cityValue);
 
+        //Run the weather AsyncTask to fetch weather report response data from weather service call
         JSONWeatherTask task = new JSONWeatherTask();
-        task.execute(new String[]{cityValue});
+        task.execute(new String[]{cityValue,appId});
 
     }
 
@@ -69,28 +80,33 @@ public class WeatherActivity extends Activity {
         sharedPreference = new CustomSharedPreference(getApplicationContext());
         //Retrieve stored city from shared preference
         String cityPreference = sharedPreference.getLocationInPreference();
+        //Assigning user registered weather appId
+        appId = getString(R.string.app_id);
         if (!cityPreference.isEmpty()) {
             JSONWeatherTask task = new JSONWeatherTask();
-            task.execute(new String[]{cityPreference});
+            task.execute(new String[]{cityPreference,appId});
         }
 
     }
 
 
     /**
-     * Run the AsyncTask to get current weather data of entered city and set it in UI
+     * Run the AsyncTask to get current weather data of entered city & registered appId for weather and set it in UI
+     * Pass the Location name(user entered city) as parameter in weather service client to fetch weather data object
+     * Once data retrieved from service pass it JSONParser to set weather and location model
+     * And also fetch current weather icon bytes
      */
     private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
 
         @Override
         protected Weather doInBackground(String... params) {
             Weather weather = new Weather();
-            String data = ((new WeatherHttpClient()).getWeatherData(params[0]));
+            String data = ((new WeatherHttpClient()).getWeatherData(params[0],params[0]));
 
             try {
                 weather = JSONWeatherParser.getWeather(data);
 
-                // Let's retrieve the icon
+                // Let's retrieve the icon , Pass the retrieved icon string code to getImage service client method to retrive image bytes
                 weather.iconData = ((new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
 
             } catch (JSONException e) {
@@ -102,7 +118,14 @@ public class WeatherActivity extends Activity {
 
 
         /**
-         * Post Execute of get current weather data of entered city and set it in UI
+         * In the Post Execute part , Set all retrieved weather & location model data into corresponding UI
+         * CityText view contains the information of user enter city name and country
+         * CondDescrText view contain information of current weather condition
+         * HumText view  contains current humitity
+         * PressText view conrains current weather pressure
+         * WindSpeed text view contains current wind speed in form of mps
+         *
+         * Todo - Have to create text view for sunrise and sunset display in UI
          *
          * @param weather
          */

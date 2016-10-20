@@ -4,7 +4,7 @@ package com.elumalai.weather.model;
 import java.io.Serializable;
 
 /*
- * Location model serization
+ * Location model serialization
  */
 public class Location implements Serializable {
 

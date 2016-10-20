@@ -1,3 +1,5 @@
+# Weather App automated test case
+#Todo Have to do calabash setup to run and validate this
 Given /^I am on the Weather Screen$/ do
     check_element_exists("textField placeholder:'Pressure'")
 end
