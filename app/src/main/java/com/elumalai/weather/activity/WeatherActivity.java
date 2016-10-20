@@ -101,7 +101,7 @@ public class WeatherActivity extends Activity {
         @Override
         protected Weather doInBackground(String... params) {
             Weather weather = new Weather();
-            String data = ((new WeatherHttpClient()).getWeatherData(params[0],params[0]));
+            String data = ((new WeatherHttpClient()).getWeatherData(params[0],params[1]));
 
             try {
                 weather = JSONWeatherParser.getWeather(data);
